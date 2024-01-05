@@ -29,7 +29,7 @@ jobs:
       - name: Get version
         id: get_version
         run: |
-          echo "::set-output name=version::$(awk -F= '/__version__/ {print $2}' setup.cfg | tr -d " '")"
+          echo "::set-output name=version::$(awk -F '= ' '/^version = / {print $2}' setup.cfg | tr -d ' ')"
 
       - name: Build wheel
         run: python -m build
