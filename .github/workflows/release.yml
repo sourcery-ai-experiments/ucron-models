@@ -1,0 +1,44 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Configure git user
+        run: |
+          git config --local user.email "me.yashasvijain@gmail.com"
+          git config --local user.name "yashasvi_jain"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Get version
+        id: get_version
+        run: |
+          echo "::set-output name=version::$(awk -F= '/__version__/ {print $2}' setup.cfg | tr -d " '")"
+
+      - name: Build wheel
+        run: python -m build
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ steps.get_version.outputs.version }}
+          artifacts: "dist/*"
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          draft: false
+          prerelease: false
