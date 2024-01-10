@@ -57,11 +57,6 @@ class Course(MongoDBModel):
     A list of section offered for a course, if any.
     """
 
-    prerequisites: Optional[Prerequisites]
-    """
-    Prerequisite courses for this course, if any.
-    """
-
     restrictions: Optional[str] = None
     """
     Enrollment restrictions for the course.
