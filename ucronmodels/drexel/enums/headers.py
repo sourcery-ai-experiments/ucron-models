@@ -30,7 +30,7 @@ class SectionHeaders(Enum):
     TEXTBOOKS = "Textbooks"
 
 
-class AddtionalDetailsHeaders(Enum):
+class AdditionalDetailsHeaders(Enum):
     COURSE_DESCRIPTION = "Course Description:"
     CREDITS = "Credits:"
     COLLEGE = "College:"
