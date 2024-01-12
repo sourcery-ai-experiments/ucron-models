@@ -1,11 +1,12 @@
 from typing import Optional
 
+from pydantic import BaseModel
 from pydantic.alias_generators import to_camel
 
 from .prerequisites import Prerequisites
 
 
-class PrerequisitesContainer:
+class PrerequisitesContainer(BaseModel):
     """
     A model that will be used to transport prerequisites information for a course.
     """
