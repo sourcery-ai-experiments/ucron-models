@@ -1,6 +1,6 @@
-from typing import Optional
+from typing import Any, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from pydantic.alias_generators import to_camel
 
 from .prerequisites import Prerequisites
@@ -25,6 +25,14 @@ class PrerequisitesContainer(BaseModel):
     """
     Prerequisite courses for this course, if any.
     """
+
+    @field_validator("prerequisites", mode="before")
+    @classmethod
+    def prerequisitesValidator(cls, v: Any) -> Optional[Prerequisites]:
+        """
+        Allows the Prerequisites model to use custom deserialization logic.
+        """
+        return Prerequisites.from_dict(v)
 
     class Config:
         """
