@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List
 
 from pydantic import BaseModel, Field
 from pydantic.alias_generators import to_camel
@@ -22,9 +22,27 @@ class Prerequisites(BaseModel):
     The logical operator (e.g., AND, OR) used to combine the prerequisites.
     """
 
+    @classmethod
+    def from_dict(cls, data: Any) -> "Prerequisites":
+        """
+        Custom deserialization to construct Prerequisites from a dict.
+        """
+        prerequisites = cls(logical_operator=data.get("logicalOperator"))
+
+        if data.get("prerequisites") is not None:
+            for p in data["prerequisites"]:
+                if "logicalOperator" in p:
+                    prerequisites.prerequisites.append(cls(**p))
+                else:
+                    prerequisites.prerequisites.append(CourseRequirement(**p))
+        else:
+            prerequisites.prerequisites = []
+
+        return prerequisites
+
     class Config:
         """
-        Configuration settings for the PreRequisites model.
+        Configuration settings for the Prerequisites model.
         """
 
         use_enum_values = True
