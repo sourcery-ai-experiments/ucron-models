@@ -32,7 +32,7 @@ class PrerequisitesContainer(BaseModel):
         """
         Allows the Prerequisites model to use custom deserialization logic.
         """
-        return Prerequisites.from_dict(v)
+        return Prerequisites.from_dict(v) if v is not None else None
 
     class Config:
         """
