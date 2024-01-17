@@ -32,7 +32,7 @@ class Prerequisites(BaseModel):
         if data.get("prerequisites") is not None:
             for p in data["prerequisites"]:
                 if "logicalOperator" in p:
-                    prerequisites.prerequisites.append(cls(**p))
+                    prerequisites.prerequisites.append(cls.from_dict(p))
                 else:
                     prerequisites.prerequisites.append(CourseRequirement(**p))
         else:
