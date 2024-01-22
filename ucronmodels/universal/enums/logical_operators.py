@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 import strawberry
 
 
 @strawberry.enum
-class LogicalOperator(Enum):
+class LogicalOperator(StrEnum):
     """
     Enumeration for logical operators.
     """

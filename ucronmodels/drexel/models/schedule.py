@@ -1,11 +1,10 @@
-# from calendar import Day
 from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel
 from pydantic.alias_generators import to_camel
 
-from ucronmodels.universal.enums import Day
+from ucronmodels.universal.enums import DaySymbol
 
 
 class TimeRange(BaseModel):
@@ -59,7 +58,7 @@ class CourseSchedule(BaseModel):
     The time range for the course.
     """
 
-    days: List[Day]
+    days: List[DaySymbol]
     """
     The days when the course will be held.
     """

@@ -3,7 +3,8 @@ from typing import Any, List
 from pydantic import BaseModel, Field
 from pydantic.alias_generators import to_camel
 
-from ..enums import LogicalOperator
+from ucronmodels.universal.enums import LogicalOperator
+
 from .course_requirement import CourseRequirement
 
 

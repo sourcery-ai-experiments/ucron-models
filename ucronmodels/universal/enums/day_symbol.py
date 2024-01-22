@@ -31,3 +31,8 @@ class DaySymbol(IntEnum):
     """
     Friday (4)
     """
+
+    TBD = -1
+    """
+    To Be Decided (-1)
+    """
