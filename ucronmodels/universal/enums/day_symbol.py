@@ -32,6 +32,11 @@ class DaySymbol(IntEnum):
     Friday (4)
     """
 
+    S = Day.SATURDAY
+    """
+    Saturday (5)
+    """
+
     TBD = -1
     """
     To Be Decided (-1)
