@@ -1,7 +1,7 @@
-from enum import Enum, StrEnum
+from enum import StrEnum
 
 
-class TMSHeaders(Enum):
+class TMSHeaders(StrEnum):
     SUBJECT_CODE = "Subject Code"
     COURSE_NUMBER = "Course Number"
     INSTRUCTION_TYPE = "Instruction Type"
@@ -13,7 +13,7 @@ class TMSHeaders(Enum):
     INSTRUCTOR = "Instructor"
 
 
-class SectionHeaders(Enum):
+class SectionHeaders(StrEnum):
     CRN = "CRN"
     SUBJECT_CODE = "Subject Code"
     COURSE_NUMBER = "Course Number"
@@ -30,7 +30,7 @@ class SectionHeaders(Enum):
     TEXTBOOKS = "Textbooks"
 
 
-class AdditionalDetailsHeaders(Enum):
+class AdditionalDetailsHeaders(StrEnum):
     COURSE_DESCRIPTION = "Course Description:"
     CREDITS = "Credits:"
     COLLEGE = "College:"
