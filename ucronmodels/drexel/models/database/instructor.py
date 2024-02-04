@@ -1,7 +1,7 @@
 from ucronmodels.universal.models import MongoDBModel
 
 
-class Instructor(MongoDBModel):
+class InstructorDB(MongoDBModel):
     """
     A Pydantic model representing a course instructor.
     """

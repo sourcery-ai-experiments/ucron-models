@@ -5,13 +5,42 @@ from pydantic.alias_generators import to_camel
 
 from ucronmodels.universal.models import PyObjectId
 
-from .credits import Credits
-from .schedule import CourseSchedule
+from ..common import CourseSchedule, Credits
 
 
-class CourseSection(BaseModel):
+class SectionDB(BaseModel):
     """
-    A model representing a specific section or class of a course.
+    A database model representing a specific section or class of a course.
+    """
+
+    subject_code: str
+    """
+    The subject code of the course, such as "CS" for Computer Science.
+    """
+
+    course_number: str
+    """
+    The course number, which is a unique identifier for the course within its subject code.
+    """
+
+    section: str
+    """
+    The section identifier for the course, e.g., "001" or "A01."
+    """
+
+    term_code: int
+    """
+    The code that represents the term the course is offered in.
+    """
+
+    crn: int
+    """
+    The Course Reference Number (CRN) associated with this course section.
+    """
+
+    credits: Optional["Credits"] = None
+    """
+    Number of possible credits for a Course Section.
     """
 
     instruction_type: str
@@ -24,29 +53,14 @@ class CourseSection(BaseModel):
     The method of instruction for the course section, such as "In-Person" or "Online."
     """
 
-    section: str
-    """
-    The section identifier for the course, e.g., "001" or "A01."
-    """
-
-    crn: int
-    """
-    The Course Reference Number (CRN) associated with this course section.
-    """
-
-    campus: Optional[str] = None
-    """
-    Campus where the course is being taught.
-    """
-
     instructors: List[PyObjectId]
     """
     The list of instructors teaching the course section.
     """
 
-    credits: Optional["Credits"] = None
+    campus: Optional[str] = None
     """
-    Number of possible credits for a Course Section.
+    Campus where the course is being taught.
     """
 
     max_enroll: Optional[int] = None
