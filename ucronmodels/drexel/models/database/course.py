@@ -1,15 +1,15 @@
-from typing import List, Optional
+from typing import Any, Optional
+
+from pydantic import field_validator
 
 from ucronmodels.universal.models import MongoDBModel
 
-from .course_section import CourseSection
-from .credits import Credits
-from .prerequisites import Prerequisites
+from ..common import Credits, Prerequisites
 
 
-class Course(MongoDBModel):
+class CourseDB(MongoDBModel):
     """
-    A model representing a unique course identified by its subject code, course number, and term code.
+    A database model representing a unique course identified by its subject code and course number.
     """
 
     subject_code: str
@@ -25,11 +25,6 @@ class Course(MongoDBModel):
     course_title: Optional[str] = None
     """
     The title of the course.
-    """
-
-    term_code: int
-    """
-    The code that represents the term the course is offered in.
     """
 
     description: Optional[str] = None
@@ -52,12 +47,22 @@ class Course(MongoDBModel):
     The department, within the college, responsible for the Course.
     """
 
-    sections: List["CourseSection"] = []
-    """
-    A list of section offered for a course, if any.
-    """
-
     restrictions: Optional[str] = None
     """
     Enrollment restrictions for the course.
     """
+
+    prerequisites: Optional[Prerequisites]
+    """
+    Prerequisite courses for this course, if any.
+    """
+
+    @field_validator("prerequisites", mode="before")
+    @classmethod
+    def prerequisitesValidator(cls, v: Any) -> Optional[Prerequisites]:
+        """
+        Allows the Prerequisites model to use custom deserialization logic.
+        """
+        if isinstance(v, Prerequisites):
+            return v
+        return Prerequisites.from_dict(v) if v is not None else None
