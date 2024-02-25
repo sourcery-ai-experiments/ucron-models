@@ -20,3 +20,8 @@ class DBCollection(StrEnum):
     """
     The collection for storing section-related data.
     """
+
+    USER = "User"
+    """
+    The collection for storing user-related data.
+    """
