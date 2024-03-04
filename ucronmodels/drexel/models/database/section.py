@@ -1,14 +1,13 @@
 from typing import List, Optional
 
-from pydantic import BaseModel
 from pydantic.alias_generators import to_camel
 
-from ucronmodels.universal.models import PyObjectId
+from ucronmodels import MongoDBModel, PyObjectId
 
 from ..common import CourseSchedule, Credits
 
 
-class SectionDB(BaseModel):
+class SectionDB(MongoDBModel):
     """
     A database model representing a specific section or class of a course.
     """
