@@ -20,3 +20,8 @@ class DatabaseWriteOperation(StrEnum):
     """
     DELETE: Represents a delete operation.
     """
+
+    INVALID = "INVALID"
+    """
+    INVALID: Represents an invalid operation.
+    """
