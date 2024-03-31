@@ -59,6 +59,9 @@ class CreateUserRequest(BaseModel):
     email: EmailStr
     """The email address of the new user."""
 
+    name: Optional[str] = None
+    """The name of the new user."""
+
     password: str
     """The password for the new user"""
 

@@ -1,6 +1,7 @@
 from typing import List
 
 from pydantic import BaseModel
+from pydantic.alias_generators import to_camel
 
 
 class Token(BaseModel):
@@ -13,6 +14,14 @@ class Token(BaseModel):
 
     token_type: str
     """The type of the token, typically Bearer."""
+
+    class Config:
+        """
+        Configuration class for the `Token` model.
+        """
+
+        alias_generator = to_camel
+        """A function that is used to generate aliases for model fields."""
 
 
 class TokenData(BaseModel):
