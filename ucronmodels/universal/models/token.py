@@ -23,6 +23,9 @@ class Token(BaseModel):
         alias_generator = to_camel
         """A function that is used to generate aliases for model fields."""
 
+        populate_by_name = True
+        """Whether an aliased field may be populated by its name as given by the model attribute, as well as the alias."""
+
 
 class TokenData(BaseModel):
     """
