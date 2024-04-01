@@ -15,17 +15,6 @@ class Token(BaseModel):
     token_type: str
     """The type of the token, typically Bearer."""
 
-    class Config:
-        """
-        Configuration class for the `Token` model.
-        """
-
-        alias_generator = to_camel
-        """A function that is used to generate aliases for model fields."""
-
-        populate_by_name = True
-        """Whether an aliased field may be populated by its name as given by the model attribute, as well as the alias."""
-
 
 class TokenData(BaseModel):
     """
