@@ -1,7 +1,7 @@
 from typing import List
 
-from ucronmodels.drexel.models.database import CourseDB
-from ucronmodels.drexel.models.client.section_client import SectionClient
+from ..database import CourseDB
+from .section_client import SectionClient
 
 
 class CourseClient(CourseDB):

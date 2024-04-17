@@ -1,5 +1,6 @@
 from typing import List
-from ucronmodels.drexel.models.database import SectionDB, InstructorDB
+
+from ..database import InstructorDB, SectionDB
 
 
 class SectionClient(SectionDB):
