@@ -10,3 +10,8 @@ class DBViews(StrEnum):
     """
     The view for distinct subject codes on the Courses collection.
     """
+
+    COURSE_CLIENT = "CourseClient"
+    """
+    The view for CourseClient.
+    """
