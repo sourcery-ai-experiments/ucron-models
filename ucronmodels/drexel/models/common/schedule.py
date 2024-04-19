@@ -66,8 +66,7 @@ class CourseSchedule(BaseModel):
         """
         if isinstance(start_date, str):
             try:
-                date = datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S%z")
-                return date
+                return datetime.strptime(start_date, "%Y-%m-%dT%H:%M:%S%z")
             except ValueError:
                 pass
         return start_date
@@ -85,8 +84,7 @@ class CourseSchedule(BaseModel):
         """
         if isinstance(end_date, str):
             try:
-                date = datetime.strptime(end_date, "%Y-%m-%dT%H:%M:%S%z")
-                return date
+                return datetime.strptime(end_date, "%Y-%m-%dT%H:%M:%S%z")
             except ValueError:
                 pass
         return end_date
