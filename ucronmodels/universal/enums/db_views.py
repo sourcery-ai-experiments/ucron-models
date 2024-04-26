@@ -7,11 +7,16 @@ class DBViews(StrEnum):
     """
 
     DISTINCT_SUBJECT_CODES = "DistinctSubjectCodes"
-    """
-    The view for distinct subject codes on the Courses collection.
-    """
+    """The view for distinct subject codes on the Courses collection."""
 
     COURSE_CLIENT = "CourseClient"
-    """
-    The view for CourseClient.
-    """
+    """The view for CourseClient."""
+
+    TERM_CODES = "TermCodes"
+    """The view for term codes and subject codes grouped by term codes."""
+
+    COLLEGES = "Colleges"
+    """The view for colleges and departments grouped by colleges."""
+
+    COURSE_NUMBERS = "CourseNumbers"
+    """The view for course numbers grouped by term codes and subject codes."""
