@@ -12,7 +12,7 @@ class CollegesView(BaseModel):
     college: str
     """The college."""
 
-    departements: List[str]
+    departments: List[str]
     """The departments within the college."""
 
     subject_codes: List[str]
