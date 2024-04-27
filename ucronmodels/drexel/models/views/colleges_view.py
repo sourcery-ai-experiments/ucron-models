@@ -4,23 +4,23 @@ from pydantic import BaseModel
 from pydantic.alias_generators import to_camel
 
 
-class CourseNumbersView(BaseModel):
+class CollegesView(BaseModel):
     """
-    A view model for the course numbers view.
+    A view model for the colleges view.
     """
 
-    term_code: int
-    """The term code."""
+    college: str
+    """The college."""
 
-    subject_code: str
-    """The subject code."""
+    departements: List[str]
+    """The departments within the college."""
 
-    course_numbers: List[str]
-    """The course numbers."""
+    subject_codes: List[str]
+    """The subjects offered by the college."""
 
     class Config:
         """
-        Configuration class for `CourseNumbersView` model.
+        Configuration class for `CollegesView` model.
         """
 
         arbitrary_types_allowed = True

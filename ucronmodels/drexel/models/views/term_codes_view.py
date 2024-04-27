@@ -5,6 +5,10 @@ from pydantic.alias_generators import to_camel
 
 
 class TermCodesView(BaseModel):
+    """
+    A view model for the term codes view.
+    """
+
     term_code: int
     """The term code."""
 
