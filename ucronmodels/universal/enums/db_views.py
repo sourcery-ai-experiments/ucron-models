@@ -12,6 +12,9 @@ class DBViews(StrEnum):
     COURSE_CLIENT = "CourseClient"
     """The view for CourseClient."""
 
+    SECTION_CLIENT = "SectionClient"
+    """The view for SectionClient."""
+
     TERM_CODES = "TermCodes"
     """The view for term codes and subject codes grouped by term codes."""
 
