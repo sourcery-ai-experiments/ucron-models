@@ -23,3 +23,6 @@ class DBViews(StrEnum):
 
     COURSE_NUMBERS = "CourseNumbers"
     """The view for course numbers grouped by term codes and subject codes."""
+
+    CAMPUS = "Campus"
+    """The view for all distinct campuses."""

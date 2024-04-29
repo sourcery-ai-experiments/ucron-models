@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel, field_serializer
@@ -41,7 +41,7 @@ class CourseSchedule(BaseModel):
     end_date: Optional[datetime | str] = None
     """The end date of the course."""
 
-    time: TimeRange | str
+    time: TimeRange
     """The time range for the course."""
 
     days: List[DaySymbol]
