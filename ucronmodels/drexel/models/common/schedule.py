@@ -12,11 +12,11 @@ class TimeRange(BaseModel):
     Represents a time range with a start and end time.
     """
 
-    start_time: time | str
-    """The starting time of the range."""
+    start_time: int
+    """The starting time of the range in minutes."""
 
-    end_time: time | str
-    """The ending time of the range."""
+    end_time: int
+    """The ending time of the range in minutes."""
 
     class Config:
         """
