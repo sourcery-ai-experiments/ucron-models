@@ -1,5 +1,7 @@
-from typing import Optional, Sequence
+from datetime import datetime
+from typing import Optional, Self, Sequence
 
+from pydantic import model_validator
 from pydantic.alias_generators import to_camel
 
 from ucronmodels import MongoDBModel, PyObjectId
@@ -53,6 +55,27 @@ class SectionDB(MongoDBModel):
 
     schedule: CourseSchedule
     """The schedule related information about the course section."""
+
+    course_duration_in_weeks: int = 0
+    """The duration of the course in weeks."""
+
+    class_duration: int = 0
+    """The duration of the class in minutes."""
+
+    @model_validator(mode="after")
+    def validate_course_duration(self) -> Self:
+        if isinstance(self.schedule.start_date, datetime) and isinstance(
+            self.schedule.end_date, datetime
+        ):
+            self.course_duration_in_weeks = (
+                self.schedule.end_date - self.schedule.start_date
+            ).days // 7
+        return self  # type: ignore
+
+    @model_validator(mode="after")
+    def validate_class_duration(self) -> Self:
+        self.class_duration = self.schedule.time.end_time - self.schedule.time.start_time
+        return self  # type: ignore
 
     def __hash__(self) -> int:
         """

@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel, field_serializer
@@ -12,11 +12,11 @@ class TimeRange(BaseModel):
     Represents a time range with a start and end time.
     """
 
-    start_time: time | str
-    """The starting time of the range."""
+    start_time: int
+    """The starting time of the range in minutes."""
 
-    end_time: time | str
-    """The ending time of the range."""
+    end_time: int
+    """The ending time of the range in minutes."""
 
     class Config:
         """
@@ -41,7 +41,7 @@ class CourseSchedule(BaseModel):
     end_date: Optional[datetime | str] = None
     """The end date of the course."""
 
-    time: TimeRange | str
+    time: TimeRange
     """The time range for the course."""
 
     days: List[DaySymbol]
