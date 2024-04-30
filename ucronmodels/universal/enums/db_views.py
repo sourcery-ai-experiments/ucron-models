@@ -26,3 +26,6 @@ class DBViews(StrEnum):
 
     CAMPUS = "Campus"
     """The view for all distinct campuses."""
+
+    BUILDING = "Building"
+    """The view for all distinct buildings."""
